@@ -115,11 +115,11 @@ public class JdbcSalesContractDao implements SalesContractDao {
                 query.setString(1, salesContract.getContractDate());
                 query.setInt(2, salesContract.getCustomerId());
                 query.setInt(3, vehicleSold.getVin());
-                query.setDouble(4, salesTax);
-                query.setDouble(5, recordingFee);
-                query.setDouble(6, processingFee);
-                query.setDouble(7, totalPrice);
-                query.setDouble(8, monthlyPayment);
+                query.setDouble(4, Double.parseDouble(String.format("%.2f", salesTax)));
+                query.setDouble(5, Double.parseDouble(String.format("%.2f",recordingFee)));
+                query.setDouble(6, Double.parseDouble(String.format("%.2f",processingFee)));
+                query.setDouble(7, Double.parseDouble(String.format("%.2f",totalPrice)));
+                query.setDouble(8, Double.parseDouble(String.format("%.2f",monthlyPayment)));
                 query.setBoolean(9,financeOption);
 
                 int rowsAffected = query.executeUpdate();

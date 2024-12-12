@@ -432,7 +432,7 @@ public class JdbcVehicleDao implements VehicleDao {
             query.setString(5, vehicle.getVehicleType());
             query.setString(6, vehicle.getColor());
             query.setInt(7, vehicle.getOdometer());
-            query.setDouble(8, vehicle.getPrice());
+            query.setDouble(8, Double.parseDouble(String.format("%.2f",vehicle.getPrice())));
 
             // Execute update
             int affectedRows = query.executeUpdate();
@@ -461,7 +461,7 @@ public class JdbcVehicleDao implements VehicleDao {
                 query.setString(5, vehicle.getVehicleType());
                 query.setString(6, vehicle.getColor());
                 query.setInt(7, vehicle.getOdometer());
-                query.setDouble(8, vehicle.getPrice());
+                query.setDouble(8, Double.parseDouble(String.format("%.2f",vehicle.getPrice())));
 
                 int rows = query.executeUpdate();
 
@@ -514,7 +514,7 @@ public class JdbcVehicleDao implements VehicleDao {
             query.setString(4, vehicle.getVehicleType());
             query.setString(5, vehicle.getColor());
             query.setInt(6, vehicle.getOdometer());
-            query.setDouble(7,vehicle.getPrice());
+            query.setDouble(8, Double.parseDouble(String.format("%.2f",vehicle.getPrice())));
             query.setInt(8, vin); // VIN as part of the WHERE clause
 
             int rowsUpdated = query.executeUpdate();

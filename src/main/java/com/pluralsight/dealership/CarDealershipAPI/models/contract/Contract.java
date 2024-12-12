@@ -96,4 +96,6 @@ public abstract class Contract {
     public abstract double getMonthlyPayment();
 
 
+
+
 }

@@ -1,5 +1,6 @@
 package com.pluralsight.dealership.CarDealershipAPI.models.contract;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pluralsight.dealership.CarDealershipAPI.models.Vehicle;
 import com.pluralsight.dealership.CarDealershipAPI.util.Calculation;
@@ -13,10 +14,15 @@ public class SalesContract extends Contract {
      * Sales Information
      */
 
+    @JsonIgnore
     private static final double SALES_TAX_PERCENTAGE = 0.05;
+    @JsonIgnore
     private static final double RECORDING_FEE_AMOUNT = 100;
+    @JsonIgnore
     private static final double VEHICLE_BELOW_10K_AMOUNT = 295;
+    @JsonIgnore
     private static final double VEHICLE_ABOVE_10K_AMOUNT = 495;
+    @JsonIgnore
     private static final double VEHICLE_AMOUNT_THRESHOLD = 10000;
 
     private double salesTax; // %5
@@ -80,18 +86,6 @@ public class SalesContract extends Contract {
         }
         return (getVehicleSold().getPrice() < VEHICLE_AMOUNT_THRESHOLD)
                 ? VEHICLE_BELOW_10K_AMOUNT : VEHICLE_ABOVE_10K_AMOUNT;
-    }
-
-    public double getVehicleBelow10kAmount() {
-        return VEHICLE_BELOW_10K_AMOUNT;
-    }
-
-    public double getVehicleAbove10kAmount() {
-        return VEHICLE_ABOVE_10K_AMOUNT;
-    }
-
-    public double getVehicleAmount() {
-        return VEHICLE_AMOUNT_THRESHOLD;
     }
 
     // Getters with formatted output for JSON
@@ -165,5 +159,23 @@ public class SalesContract extends Contract {
 
     public void setMonthlyPayment(double monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "SalesContract{" +
+                "contractId=" + contractId +
+                ", contractDate='" + contractDate + '\'' +
+                ", customerId=" + customerId +
+                ", vehicleSold=" + vehicleSold +
+                ", salesTax=" + String.format("%.2f", salesTax) +
+                ", recordingFee=" + String.format("%.2f", recordingFee) +
+                ", processingFee=" + String.format("%.2f", processingFee) +
+                ", totalPrice=" + String.format("%.2f", totalPrice) +
+                ", isFinance=" + isFinance +
+                ", monthlyPayment=" + String.format("%.2f", monthlyPayment)+
+                '}';
     }
 }

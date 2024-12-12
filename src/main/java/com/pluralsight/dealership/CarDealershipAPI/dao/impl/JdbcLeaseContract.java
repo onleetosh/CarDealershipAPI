@@ -107,10 +107,10 @@ public class JdbcLeaseContract implements LeaseContractDao {
                 query.setString(1, leaseContract.getContractDate());
                 query.setInt(2, leaseContract.getCustomerId());
                 query.setInt(3, vehicleSold.getVin());
-                query.setDouble(4, expectedEndingValue); // Set the calculated expected ending value
-                query.setDouble(5, leaseFee); // Set the calculated lease fee
-                query.setDouble(6, totalPrice); // Set the calculated total price
-                query.setDouble(7, monthlyPayment);
+                query.setDouble(4, Double.parseDouble(String.format("%.2f",expectedEndingValue))); // Set the calculated expected ending value
+                query.setDouble(5, Double.parseDouble(String.format("%.2f", leaseFee))); // Set the calculated lease fee
+                query.setDouble(6, Double.parseDouble(String.format("%.2f", totalPrice))); // Set the calculated total price
+                query.setDouble(7, Double.parseDouble(String.format("%.2f", monthlyPayment)));
 
                 int rowsAffected = query.executeUpdate();
                 if (rowsAffected == 0) {

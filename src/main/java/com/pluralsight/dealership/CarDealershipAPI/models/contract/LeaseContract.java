@@ -1,5 +1,6 @@
 package com.pluralsight.dealership.CarDealershipAPI.models.contract;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pluralsight.dealership.CarDealershipAPI.models.Vehicle;
 import com.pluralsight.dealership.CarDealershipAPI.util.Calculation;
@@ -14,7 +15,9 @@ public class LeaseContract extends Contract {
     private double expectEndingValue; //  e = p * (50/100)
     private double leaseFee; // f = p * (7/100)
 
+    @JsonIgnore
     private double expectEndingValuePercentage = 0.5;
+    @JsonIgnore
     private double leaseFeePercentage = 0.07;
 
 
@@ -49,19 +52,13 @@ public class LeaseContract extends Contract {
     }
 
 
-    public double getExpectEndingValue() {
-        return expectEndingValue;
-    }
-
-    public double getLeaseFee() {
-        return leaseFee;
-    }
-
+    @JsonIgnore
     public double getExpectEndingValuePercentage() {
         return expectEndingValuePercentage;
     }
 
 
+    @JsonIgnore
     public double getLeaseFeePercentage() {
         return leaseFeePercentage;
     }
